@@ -2,7 +2,7 @@ const express = require('express');
 const mainRouter = express.Router();
 const {addProduct,getproducts,deleteProduct,updateProduct,addStore,updateStore,getStores,deleteStore,
   createItem,deleteItem,createOrder,getItems,getOrders}=require("../controllers/main-controller")
-
+const {register}=require("../controllers/users_controller")
 
 mainRouter.get('/', (req, res) => {
   res.json('HELLO WORLD');
@@ -24,4 +24,6 @@ mainRouter.delete('/order', deleteStore);
 mainRouter.post('/item', createItem);
 mainRouter.get('/item', getItems);
 mainRouter.delete('/item', deleteItem);
+
+mainRouter.delete('/register', register);
 module.exports = mainRouter; 
