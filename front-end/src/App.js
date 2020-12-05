@@ -1,29 +1,40 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component, useState, useEffect } from 'react';
+import axios from 'axios';
+import CSTprofile from './CSTprofile';
+import "./App.css"
+import StoreProfile from './StoreProfile';
 
-// Class component
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <div>
-        <h1>HELLO WORLD</h1>
+// import  'bootstrap';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
+
+const App = (props) => {
+  const [storeId, setStoreId] = useState(6)
+  return (
+    <Router>
+      <div className="app">
+        <p>APP</p>
+        <Link  path="/app">mmmm</Link>
+        <Route
+          exact
+          path="/profile/:id"
+          render={(props) => <CSTprofile  {...props} />}
+        />
+
+        <Route
+          exact
+          path="/store/:id"
+          render={(props) => <StoreProfile name={storeId} sId={9}{...props} />}
+        />
       </div>
-    );
-  }
+    </Router>
+  )
 }
 
-/* 
-// functional component
-const App = () => {
-  return (
-    <div>
-      <h1>HELLO WORLD</h1>
-    </div>
-  );
-};
-export default App;
-*/
+
+export default App
